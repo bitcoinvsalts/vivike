@@ -35,7 +35,7 @@ function autho(app) {
   );
   app.use(function (req, res, next) {
     req.user = req.oidc.user;
-    console.log("========")
+    console.log("===>", req.user)
     next();
   });
 }
@@ -57,6 +57,7 @@ async function assets(app) {
 
 function vike(app) {
   app.get('*', async (req, res, next) => {
+    console.log("--=====--")
     const pageContextInit = {
       urlOriginal: req.originalUrl,
       headersOriginal: req.headers,
