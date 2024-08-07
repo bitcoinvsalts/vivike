@@ -66,7 +66,7 @@ function UserInfo() {
   )
 }
 async function logout() {
-  await fetch('/_auth/logout', { method: 'POST' })
+  await fetch('/logout', { method: 'POST' })
   await reload()
 }
 

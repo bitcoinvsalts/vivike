@@ -41,7 +41,7 @@ async function onSubmit(ev: React.FormEvent) {
   ev.preventDefault()
   const username = getHtmlInputElement('username').value
   const password = getHtmlInputElement('password').value
-  const response = await fetch('/_auth/login', {
+  const response = await fetch('/login', {
     method: 'POST',
     body: JSON.stringify({ username, password }),
     headers: [['Content-Type', 'application/json']]
