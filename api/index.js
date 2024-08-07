@@ -2,7 +2,8 @@ import express from 'express'
 import { renderPage } from 'vike/server'
 import { root } from './root.js'
 import cookieParser from 'cookie-parser'
-import { getUser, checkCredentials } from './users.js'
+const { auth } = require('express-openid-connect');
+
 
 const isProduction = process.env.NODE_ENV === 'production'
 const port = process.env.PORT || 3000
@@ -11,14 +12,14 @@ startServer()
 
 async function startServer() {
   const app = express()
-  auth(app)
+  autho(app)
   await assets(app)
   vike(app)
   app.listen(port)
   console.log(`Server running at http://localhost:${port}`)
 }
 
-function auth(app) {
+function autho(app) {
   const config = {
     authRequired: false,
     auth0Logout: true,
