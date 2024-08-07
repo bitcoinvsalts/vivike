@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/((?!assets/).*)",
-      "destination": "express-entry.ts"
+      "destination": "/server/index.js"
     }
   ]
 }
