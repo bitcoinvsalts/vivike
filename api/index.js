@@ -26,7 +26,7 @@ function autho(app) {
     issuerBaseURL: 'https://dev-02ip8ekqdbissnyc.us.auth0.com',
     clientID: 'HHDaQ3D9UE8XZPRAORExmCjftxyQZaWO',
     secret: 'Kp66pYGmd3jZtbvzerB3lAL58Drs4HUEsChMyd1ZAxIEdOWUzgiGELeyqmK5G9S2',
-    baseURL: 'https://viked.vercel.app/'
+    baseURL: 'https://vivike.vercel.app/'
   };
   app.use(cookieParser())
   app.use(express.json()) // Parse & make HTTP request body available at `req.body`
