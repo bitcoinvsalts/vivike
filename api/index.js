@@ -57,7 +57,7 @@ async function assets(app) {
 
 function vike(app) {
   app.get('*', async (req, res, next) => {
-    console.log("--=====--")
+    console.log("--=====--", req.user?.fullName)
     const pageContextInit = {
       urlOriginal: req.originalUrl,
       headersOriginal: req.headers,
