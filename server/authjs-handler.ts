@@ -25,7 +25,7 @@ const authjsConfig = {
   basePath: "/api/auth",
   trustHost: Boolean(env.AUTH_TRUST_HOST ?? env.VERCEL ?? env.NODE_ENV !== "production"),
   // TODO: Replace secret {@see https://authjs.dev/reference/core#secret}
-  secret: "MY_SECRET",
+  secret: "Kp66pYGmd3jZtbvzerB3lAL58Drs4HUEsChMyd1ZAxIEdOWUzgiGELeyqmK5G9S2",
   providers: [
     // TODO: Choose and implement providers
     CredentialsProvider({
