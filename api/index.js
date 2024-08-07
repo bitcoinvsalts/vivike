@@ -19,30 +19,24 @@ async function startServer() {
 }
 
 function auth(app) {
+  const config = {
+    authRequired: false,
+    auth0Logout: true,
+    issuerBaseURL: 'https://dev-02ip8ekqdbissnyc.us.auth0.com',
+    clientID: 'HHDaQ3D9UE8XZPRAORExmCjftxyQZaWO',
+    secret: 'Kp66pYGmd3jZtbvzerB3lAL58Drs4HUEsChMyd1ZAxIEdOWUzgiGELeyqmK5G9S2',
+    baseURL: 'https://viked.vercel.app/'
+  };
   app.use(cookieParser())
-  app.use(function (req, _res, next) {
-    const { username } = req.cookies
-    const user = !username ? null : getUser(username)
-    req.user = user
-    next()
-  })
   app.use(express.json()) // Parse & make HTTP request body available at `req.body`
-  app.post('/_auth/login', (req, res) => {
-    const { username, password } = req.body
-    const user = checkCredentials(username, password)
-    if (user) {
-      res.cookie('username', username, {
-        maxAge: 24 * 60 * 60 * 1000, // One day
-        httpOnly: true // Only the server can read the cookie
-      })
-    }
-    const success = !!user
-    res.end(JSON.stringify({ success }))
-  })
-  app.post('/_auth/logout', (_req, res) => {
-    res.clearCookie('username')
-    res.end()
-  })
+  app.use(
+    auth(config)
+  );
+  app.use(function (req, res, next) {
+    req.user = req.oidc.user;
+    console.log("========")
+    next();
+  });
 }
 
 async function assets(app) {

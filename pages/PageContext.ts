@@ -3,9 +3,7 @@ declare global {
   namespace Vike {
     interface PageContext {
       userFullName?: string
-      user?: {
-        isAdmin: boolean
-      }
+      user?: object
     }
   }
 }
